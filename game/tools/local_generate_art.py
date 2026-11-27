@@ -84,6 +84,7 @@ def load_guide(path: Path, size: tuple[int, int]) -> "object":
 
 
 def main() -> None:
+    global PREVIEWS
     import torch
     from diffusers import StableDiffusionXLImg2ImgPipeline
 
@@ -97,7 +98,6 @@ def main() -> None:
     parser.add_argument("--previews", type=Path, default=PREVIEWS)
     args = parser.parse_args()
 
-    global PREVIEWS
     PREVIEWS = args.previews
     names = NAMES if args.all else args.names
     if not names:
@@ -108,7 +108,6 @@ def main() -> None:
         args.model, torch_dtype=torch.float16, use_safetensors=True
     )
     pipe.enable_model_cpu_offload()
-    pipe.enable_vae_slicing()
 
     for index, name in enumerate(names):
         guide_source = preview_path(name)

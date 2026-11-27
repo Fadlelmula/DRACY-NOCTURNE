@@ -92,6 +92,8 @@
 - Added `tools/local_generate_art.py` to run SDXL img2img locally on an NVIDIA GPU, using the existing vector previews as composition guides. This needs no API key and no paid credits.
 - Updated the asset manifest builder to validate and manifest generated PNGs when present.
 - Verified the UI smoke suite still passes with the new path resolver (17 checks, 0 failures).
+- Tested SDXL locally on an RTX 4060. Strength 0.55–0.62 preserved identity but mostly smoothed the existing vector rendering; strength 0.78 drifted the face, eye colour, and hair, and full-body renders introduced artefacts. The trial renders were removed rather than shipped as a quality regression.
+- The automated importer is source-agnostic: higher-quality images from a free image app can be placed in `sprites/raw/generated/` and imported with one command.
 
 ## Remaining after M01
 
