@@ -1,0 +1,27 @@
+{
+  "greeting": "You survived the prologue. I was beginning to think the door had scared you off.",
+  "promise_greeting": "Midnight is still on, then. Try not to sound so nervous when you ask about the gateway.",
+  "topics": [
+    {"id": "match", "label": "Blame matchmaking", "text": "Matchmaking is a cursed art. Last night my team defended the wrong tower with the conviction of people who had never seen a map. I am not angry. I am composing a ballad."},
+    {"id": "photo", "label": "Ask about the photo", "text": "The street photo? I took it from the old bridge. The bridge is not old, and there is no bridge there now. You see why I keep it off my page."},
+    {"id": "fashion", "label": "Talk fashion", "text": "Salma says velvet is having a moment. Salma also says pineapple belongs on pizza, so we choose which advice to ignore. The jacket survived the shoot, by the way. Barely."},
+    {"id": "music", "label": "Share music", "text": "Tonight I am listening to something slow and dramatic. It is either the soundtrack to a doomed romance or a perfume advertisement. The difference is mostly the budget."},
+    {"id": "nocturne", "label": "Ask about Nocturne", "text": "Nocturne has cities older than your maps and people who would sell their own shadows for a secret. That is all you get tonight. Curiosity is good; wandering is not."},
+    {"id": "boundary", "label": "Check in", "text": "You can tell me to change the subject, you know. I tease because it is easier than saying I am glad you are still here. That is not a demand. Just a confession, unfortunately."}
+  ],
+  "fallbacks": {
+    "game": "If this is about Mobile Legends, the answer is that the game is rigged and my team is a public hazard. Send the match ID and I will pretend to be objective.",
+    "nocturne": "I told you: doors, old cities, bad politics. Ask me something smaller. Fashion. Music. Why Salma's playlists are superior. Those I can explain without a map.",
+    "photo": "Some photographs are memories. Some are warnings. That one was both, and I am not ready to tell you which came first.",
+    "music": "Depends on the mood. Do you want doom, dancing, or the specific sadness of a train leaving at 2 a.m.? Choose one and I will send something dangerous.",
+    "hello": "Hello to you too. You are very formal for someone who has seen my terrible camera roll.",
+    "default": "I am listening. Though if this is you trying to extract supernatural secrets, your technique needs work. Ask me about the photo, the game, or Salma's questionable fashion advice."
+  },
+  "keywords": {
+    "game": ["game", "match", "mobile", "legend", "rank", "hero", "duo"],
+    "nocturne": ["nocturne", "vampire", "world", "gateway", "door", "magic", "cathedral"],
+    "photo": ["photo", "picture", "street", "camera", "instagram"],
+    "music": ["music", "song", "band", "album", "playlist"],
+    "hello": ["hello", "hi ", "hey", "good evening", "good morning"]
+  }
+}

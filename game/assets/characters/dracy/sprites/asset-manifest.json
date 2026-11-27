@@ -1,0 +1,122 @@
+{
+  "character": "Dracy",
+  "approved_reference": "assets\\characters\\dracy\\references\\dracy-master-reference.png",
+  "approved_reference_sha256": "f89c54468e7a67c108abc3087619755392705709c1fb90b046e78abc75f17305",
+  "pipeline": "game/tools/generate_art.py + game/tools/build_dracy_assets.py",
+  "style": "Original transparent semi-stylized vector interpretation guided by the approved reference; no reference-sheet crops.",
+  "license": "Project proprietary — see LICENSE",
+  "assets": [
+    {
+      "name": "neutral",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\neutral.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "smiling",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\smiling.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "mischievous",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\mischievous.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "sarcastic",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\sarcastic.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "angry",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\angry.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "embarrassed",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\embarrassed.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "flirting",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\flirting.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "sad",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\sad.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "suspicious",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\suspicious.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "frightened",
+      "type": "expression",
+      "path": "assets\\characters\\dracy\\sprites\\expressions\\frightened.svg",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "standing",
+      "type": "pose",
+      "path": "assets\\characters\\dracy\\sprites\\poses\\standing.svg",
+      "width": 600,
+      "height": 1400
+    },
+    {
+      "name": "seated",
+      "type": "pose",
+      "path": "assets\\characters\\dracy\\sprites\\poses\\seated.svg",
+      "width": 600,
+      "height": 1200
+    },
+    {
+      "name": "signature",
+      "type": "outfit",
+      "path": "assets\\characters\\dracy\\sprites\\outfits\\signature.svg",
+      "width": 600,
+      "height": 1400
+    },
+    {
+      "name": "casual",
+      "type": "outfit",
+      "path": "assets\\characters\\dracy\\sprites\\outfits\\casual.svg",
+      "width": 600,
+      "height": 1400
+    },
+    {
+      "name": "gothic",
+      "type": "outfit",
+      "path": "assets\\characters\\dracy\\sprites\\outfits\\gothic.svg",
+      "width": 600,
+      "height": 1400
+    },
+    {
+      "name": "alternative",
+      "type": "outfit",
+      "path": "assets\\characters\\dracy\\sprites\\outfits\\alternative.svg",
+      "width": 600,
+      "height": 1400
+    }
+  ]
+}

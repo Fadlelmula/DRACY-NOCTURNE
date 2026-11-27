@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "characters": {
+    "dracy": {
+      "display_name": "Dracy",
+      "expressions": ["neutral", "smiling", "mischievous", "sarcastic", "angry", "embarrassed", "flirting", "sad", "suspicious", "frightened"]
+    }
+  },
+  "backgrounds": ["bedroom", "rain_window", "rooftop", "impossible_street", "nocturne_glimpse"],
+  "music": ["prologue_theme", "rain_ambience", "after_midnight"],
+  "flags": [
+    "met_dracy", "invited_to_duo", "dracy_shared_first_photo", "asked_about_photo",
+    "double_texted", "respected_dracy_busy", "player_shared_name", "shared_small_secret",
+    "searched_photo", "dracy_noticed_search", "obeyed_warning", "checked_front_door",
+    "player_suspects_supernatural_activity", "gateway_discovered", "dracy_secret_partially_revealed",
+    "promised_to_meet", "meeting_undecided", "dracy_felt_safe", "saw_impossible_street"
+  ],
+  "memories": {
+    "mem_first_meeting": "The player and Dracy first talked past midnight in an online gothic-fashion community.",
+    "mem_respected_boundary": "Dracy remembers that the player set a boundary and she respected it.",
+    "mem_respected_busy": "Dracy remembers that the player did not demand her time during a photoshoot.",
+    "mem_player_name": "The player shared their real first name with Dracy.",
+    "mem_obeyed_warning": "The player stayed inside when Dracy warned them not to open the door.",
+    "mem_meeting_promise": "The player promised to meet Dracy at midnight and consider opening a gateway."
+  }
+}

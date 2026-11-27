@@ -1,0 +1,20 @@
+{
+  "name": "dracy-nocturne-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Secure optional AI conversation backend for DRACY: NOCTURNE",
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --experimental-strip-types --watch src/index.ts",
+    "start": "node --env-file-if-exists=.env --experimental-strip-types src/index.ts",
+    "test": "node --experimental-strip-types --test tests",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3"
+  }
+}

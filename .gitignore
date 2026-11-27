@@ -1,0 +1,35 @@
+# Godot 4
+.godot/
+*.import
+export.cfg
+export_presets.cfg
+.mono/
+data_*/
+
+# Local game data and secrets
+game/.env*
+!game/.env.example
+backend/.env*
+!backend/.env.example
+*.sav
+*.tmp
+
+# Node / TypeScript
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python caches from the art generators
+__pycache__/
+*.pyc
+
+# Local validation tools
+.tools/

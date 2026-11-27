@@ -1,0 +1,18 @@
+{
+  "menu.new_game": "New Game",
+  "menu.continue": "Continue",
+  "menu.settings": "Settings",
+  "menu.archive": "Character Archive",
+  "menu.quit": "Quit",
+  "menu.offline_ready": "OFFLINE READY  ·  18+",
+  "menu.tagline": "Some friendships begin with a message.\nOthers begin with a door.",
+  "ui.log": "Log",
+  "ui.save": "Save",
+  "ui.load": "Load",
+  "ui.data": "Data",
+  "ui.settings": "Settings",
+  "ui.menu": "Menu",
+  "ui.back": "Back",
+  "prologue.l001": "The city has gone quiet enough for the refrigerator to sound like a distant engine. Your phone glows on the blanket: 00:47.",
+  "choice.o001_curious": "Couldn't sleep. Your profile is more interesting than my ceiling."
+}

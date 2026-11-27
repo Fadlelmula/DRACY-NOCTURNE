@@ -1,0 +1,41 @@
+{
+  "project": "DRACY: NOCTURNE",
+  "asset_policy": "Original project assets unless explicitly listed as third-party.",
+  "assets": [
+    {
+      "path": "game/assets/characters/dracy/",
+      "type": "Original vector character artwork",
+      "source": "Generated deterministically by game/tools/generate_art.py; hairstyle, face, injuries, and palette guided by the approved user reference",
+      "license": "Project proprietary — see LICENSE",
+      "notes": "Master portrait, ten facial expressions, two required poses, four outfits, and a visual reference. The user-supplied reference is preserved under references/ and is not used as an in-game sprite or cropped into one."
+    },
+    {
+      "path": "game/assets/backgrounds/",
+      "type": "Original vector environment artwork",
+      "source": "Generated deterministically by game/tools/generate_art.py",
+      "license": "Project proprietary — see LICENSE",
+      "notes": "Bedroom, rain window, rooftop, impossible street, Nocturne glimpse, menu art, and prologue cover."
+    },
+    {
+      "path": "game/assets/audio/",
+      "type": "Original synthesized music, ambience, and UI sounds",
+      "source": "Generated deterministically by game/tools/generate_audio.py",
+      "license": "Project proprietary — see LICENSE",
+      "notes": "No samples or third-party recordings."
+    },
+    {
+      "path": "game/assets/fonts/CormorantGaramond.ttf",
+      "type": "Third-party font",
+      "source": "Google Fonts — Cormorant Garamond",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "game/assets/fonts/CormorantGaramond-OFL.txt"
+    },
+    {
+      "path": "game/assets/fonts/Inter.ttf",
+      "type": "Third-party font",
+      "source": "Google Fonts — Inter",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "game/assets/fonts/Inter-OFL.txt"
+    }
+  ]
+}

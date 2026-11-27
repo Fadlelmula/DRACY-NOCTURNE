@@ -1,0 +1,13 @@
+DRACY: NOCTURNE
+Copyright (c) 2026. All rights reserved.
+
+This repository contains original narrative, design, code, and artwork created for
+DRACY: NOCTURNE. No permission is granted to redistribute, publish, or use the
+story, characters, visual identity, or game assets without written permission.
+
+Third-party components retain their own licenses. Font licenses are included in
+game/assets/fonts/. Godot and Node.js are dependencies, not bundled here.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.

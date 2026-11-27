@@ -1,0 +1,2937 @@
+{
+  "schema_version": 1,
+  "id": "prologue",
+  "title": "The Girl Behind the Screen",
+  "start_scene": "p001_midnight_scroll",
+  "endings": [
+    "a_door_awaits",
+    "until_midnight"
+  ],
+  "events": [
+    {
+      "id": "event_boundary_respected",
+      "conditions": [
+        {
+          "type": "boundary",
+          "key": "friendly_only",
+          "op": "set",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "memory",
+          "id": "mem_respected_boundary",
+          "text": "The player asked to keep things friendly. Dracy respected that without withdrawing affection."
+        }
+      ]
+    },
+    {
+      "id": "event_independent_life",
+      "conditions": [
+        {
+          "type": "flag",
+          "key": "respected_dracy_busy",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "memory",
+          "id": "mem_respected_busy",
+          "text": "The player respected Dracy's plans with Salma instead of demanding she stay online."
+        }
+      ]
+    },
+    {
+      "id": "event_trusted_warning",
+      "conditions": [
+        {
+          "type": "flag",
+          "key": "obeyed_warning",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "memory",
+          "id": "mem_obeyed_warning",
+          "text": "The player stayed inside when Dracy warned them not to open the door."
+        }
+      ]
+    },
+    {
+      "id": "event_meeting_promise",
+      "conditions": [
+        {
+          "type": "flag",
+          "key": "promised_to_meet",
+          "op": "eq",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "memory",
+          "id": "mem_meeting_promise",
+          "text": "The player promised to meet Dracy at midnight. Opening the gateway remains their choice."
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "id": "p001_midnight_scroll",
+      "title": "00:47 — An ordinary night",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "on_enter": [
+        {
+          "type": "set_flag",
+          "key": "met_dracy",
+          "value": true
+        },
+        {
+          "type": "memory",
+          "id": "mem_first_meeting",
+          "text": "The player and Dracy first talked past midnight in an online gothic-fashion community."
+        }
+      ],
+      "steps": [
+        {
+          "type": "line",
+          "id": "l001",
+          "speaker": "narrator",
+          "text": "The city has gone quiet enough for the refrigerator to sound like a distant engine. Your phone glows on the blanket: 00:47.",
+          "delay": 1.0
+        },
+        {
+          "type": "line",
+          "id": "l002",
+          "speaker": "narrator",
+          "text": "You are scrolling through a small community for gothic fashion, vampire folklore, and the kind of music that sounds best after midnight.",
+          "delay": 0.5
+        },
+        {
+          "type": "line",
+          "id": "l003",
+          "speaker": "narrator",
+          "text": "A private message arrives. The username is dracy.nocturne. The profile picture is a flash of crimson eyes and black lace.",
+          "delay": 0.8
+        },
+        {
+          "type": "line",
+          "id": "l004",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "You liked my post from three weeks ago. At midnight. Bold of you.",
+          "delay": 1.4
+        },
+        {
+          "type": "choice",
+          "id": "c001_first_reply",
+          "prompt": "How do you answer?",
+          "options": [
+            {
+              "id": "o001_curious",
+              "text": "Couldn't sleep. Your profile is more interesting than my ceiling.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Opened with genuine curiosity rather than a rehearsed line."
+                }
+              ],
+              "target": "p002_first_exchange"
+            },
+            {
+              "id": "o002_honest",
+              "text": "Insomnia. You?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Answered plainly and gave her room to reciprocate."
+                }
+              ],
+              "target": "p002_first_exchange"
+            },
+            {
+              "id": "o003_tease",
+              "text": "I was hoping the vampire would message me first.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "Playful flirtation was received without pressure."
+                },
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "The joke put Dracy's strange username on your radar."
+                }
+              ],
+              "target": "p002_first_exchange"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p002_first_exchange"
+    },
+    {
+      "id": "p002_first_exchange",
+      "title": "A screen name and a smirk",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c001_o001",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Flattery. Subtle. I almost missed it.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o001_curious",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c001_o002",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Insomnia. A respectable answer. Mine is editing, rain, and poor decisions.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o002_honest",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c001_o003",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "The vampire? Keep talking like that and I may have to bill you for the disappointment.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o003_tease",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l005",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "The vampire is awake, unfortunately. Her contacts are drying out and her editor has betrayed her.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l006",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Also, 'dracy.nocturne' is an aesthetic, not a confession. Please update your fan fiction.",
+          "delay": 1.3
+        },
+        {
+          "type": "choice",
+          "id": "c002_ask_name",
+          "prompt": "What do you want to know?",
+          "options": [
+            {
+              "id": "o004_name",
+              "text": "Dracy. Is that your name, or another aesthetic?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Asked about her directly without pretending to already know her."
+                }
+              ],
+              "target": "p003_mobile_legends"
+            },
+            {
+              "id": "o005_editor",
+              "text": "What did the editor do to deserve that tone?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Let her choose the subject and showed interest in her work."
+                }
+              ],
+              "target": "p003_mobile_legends"
+            },
+            {
+              "id": "o006_username",
+              "text": "Nocturne. That's an interesting word for a username.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Noticed the unusual name instead of letting it pass."
+                }
+              ],
+              "target": "p003_mobile_legends"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p003_mobile_legends"
+    },
+    {
+      "id": "p003_mobile_legends",
+      "title": "Matchmaking is a horror genre",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c002_o004",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Dracy. Not an aesthetic. Try to remember it.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o004_name",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c002_o005",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "The editor tried to improve my shadows. I threatened to improve his chair.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o005_editor",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c002_o006",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Nocturne. An aesthetic, she says. Mostly.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o006_username",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l007",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Dracy. Moroccan, twenty-four, professionally bad at sleeping. And before you ask: no, I will not show you my rank.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l008",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "My team has invented a new strategy. It is called 'everyone split up and lose separately.'",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l009",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Mobile Legends is a crime scene with better graphics. Do you play, or are you one of those people who only watches?",
+          "delay": 1.4
+        },
+        {
+          "type": "choice",
+          "id": "c003_game",
+          "prompt": "Your answer?",
+          "options": [
+            {
+              "id": "o007_play",
+              "text": "I play. I won't promise to carry you, but I won't feed on purpose.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Met her hobby with humor and honest limits."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "invited_to_duo",
+                  "value": true
+                }
+              ],
+              "target": "p004_fashion_photo"
+            },
+            {
+              "id": "o008_support",
+              "text": "I don't play, but I can listen to the post-match autopsy.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Offered attention without pretending to share every interest."
+                }
+              ],
+              "target": "p004_fashion_photo"
+            },
+            {
+              "id": "o009_tease_game",
+              "text": "I only watch. Mainly to learn how not to end up in your stories.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "Teased back without mocking what she enjoys."
+                }
+              ],
+              "target": "p004_fashion_photo"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p004_fashion_photo"
+    },
+    {
+      "id": "p004_fashion_photo",
+      "title": "Black velvet, silver rings",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c003_o007",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "Send the ID. If you feed, I am blaming the moon.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o007_play",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c003_o008",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "A reasonable audience. Good. Not everyone needs to suffer through a match.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o008_support",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c003_o009",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Then watch and learn. Mostly learn.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o009_tease_game",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l010",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "invited_to_duo",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Good. I need a duo partner who understands that 'support' is a suggestion, not a personality. Send your ID later. If you feed, I am blaming the moon.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l011",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "You get one photo. Try not to analyze my entire personality from it.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l012",
+          "speaker": "narrator",
+          "text": "The image arrives slowly. Dracy stands on a rain-dark rooftop in a black velvet jacket, burgundy ribbons at her collar, silver rings catching the light.",
+          "delay": 1.0
+        },
+        {
+          "type": "line",
+          "id": "l013",
+          "speaker": "narrator",
+          "text": "Her long silver-blue hair lifts in the wind. A fading bruise shadows one cheek, and a thin scar crosses the bridge of her nose. She does not explain either. For a moment, her eyes look less like colored contacts and more like something lit from behind.",
+          "delay": 1.0
+        },
+        {
+          "type": "effect",
+          "id": "e004_photo",
+          "effect": {
+            "type": "set_flag",
+            "key": "dracy_shared_first_photo",
+            "value": true
+          }
+        },
+        {
+          "type": "choice",
+          "id": "c004_photo",
+          "prompt": "What do you notice first?",
+          "options": [
+            {
+              "id": "o010_jacket",
+              "text": "The jacket. The cut is unfair. Where did you find it?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Noticed the craft in her fashion instead of reducing her to appearance."
+                }
+              ],
+              "target": "p005_independent_life"
+            },
+            {
+              "id": "o011_photo",
+              "text": "The light in this photo is incredible. You took it?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Recognized her skill as a photographer."
+                }
+              ],
+              "target": "p005_independent_life"
+            },
+            {
+              "id": "o012_eyes",
+              "text": "Are those really your eyes, or very good contacts?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "A direct compliment created a small, mutual spark."
+                },
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Her unusual eyes became harder to dismiss."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "asked_about_photo",
+                  "value": true
+                }
+              ],
+              "target": "p005_independent_life"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p005_independent_life"
+    },
+    {
+      "id": "p005_independent_life",
+      "title": "She has a life off-screen",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c004_o010",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "The jacket took three weeks. Salma made the sleeves. I take full credit for the bones.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o010_jacket",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c004_o011",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "I took it. The rain was free.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o011_photo",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c004_o012",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "Very good contacts. Expensive taste. Let us move on before I have to lie creatively.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o012_eyes",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l014",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "asked_about_photo",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Very good contacts. Expensive taste. Let's move on before you ask for the brand and I have to lie creatively.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l015",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Salma helped me alter the jacket. She has a photoshoot tomorrow, and apparently I am the only person she trusts not to make her look like a Victorian lampshade.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l016",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "Which means I will be unavailable, dramatic, and carrying equipment. Please do not send me twelve messages asking if I'm dead.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l017",
+          "speaker": "narrator",
+          "text": "The chat goes quiet. The typing indicator appears, vanishes, appears again.",
+          "delay": 1.2
+        },
+        {
+          "type": "choice",
+          "id": "c005_wait",
+          "prompt": "Do you wait?",
+          "options": [
+            {
+              "id": "o013_wait",
+              "text": "Go be dramatic. I'll be here if you want to send the good photos later.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Respected her plans without making affection conditional on availability."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "respected_dracy_busy",
+                  "value": true
+                }
+              ],
+              "target": "p006_delayed_return"
+            },
+            {
+              "id": "o014_curious_wait",
+              "text": "Only if you tell me who Salma is later.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Stayed interested while leaving her free to go."
+                }
+              ],
+              "target": "p006_delayed_return"
+            },
+            {
+              "id": "o015_double",
+              "text": "Send another message: 'Everything okay?'",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Your concern arrived before there was a reason for concern."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "double_texted",
+                  "value": true
+                }
+              ],
+              "target": "p006_delayed_return"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p006_delayed_return"
+    },
+    {
+      "id": "p006_delayed_return",
+      "title": "Twenty-three minutes later",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c005_o013",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Good. Dramatic is my natural state.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o013_wait",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c005_o014",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Salma. Friend, collaborator, and voice of reason I ignore.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o014_curious_wait",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c005_o015",
+          "speaker": "dracy",
+          "expression": "angry",
+          "text": "Twenty-three minutes. I was beginning to think you had invented a new way to worry.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o015_double",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l018",
+          "speaker": "narrator",
+          "text": "You put your phone face down. Rain ticks against the window. When you look again, twenty-three minutes have disappeared.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l019",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "double_texted",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "I have been gone twenty-three minutes, not twenty-three years. If I had died, I would have made a more aesthetic final message.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l020",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Sorry. The match went badly. I needed ten minutes where nobody needed anything from me.",
+          "delay": 1.4
+        },
+        {
+          "type": "choice",
+          "id": "c006_apology",
+          "prompt": "How do you respond?",
+          "options": [
+            {
+              "id": "o016_accept",
+              "text": "Fair. You don't owe me a live commentary of your life.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Accepted her apology without demanding reassurance."
+                }
+              ],
+              "target": "p007_horror_tastes"
+            },
+            {
+              "id": "o017_gentle",
+              "text": "Bad match or bad night?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Noticed that the game might not be the whole story."
+                }
+              ],
+              "target": "p007_horror_tastes"
+            },
+            {
+              "id": "o018_tease",
+              "text": "Twenty-three years. I had already picked your mourning playlist.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Matched her humor and lowered the tension."
+                }
+              ],
+              "target": "p007_horror_tastes"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p007_horror_tastes"
+    },
+    {
+      "id": "p007_horror_tastes",
+      "title": "Taste is a haunting",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c006_o016",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Fair. You are alarmingly reasonable.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o016_accept",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c006_o017",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "Bad night. The game was worse.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o017_gentle",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c006_o018",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "The playlist had better include a tiny violin.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o018_tease",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l021",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Bad match. The world remains disappointingly solid. Now: horror movie, or gothic romance? Choose carefully. This reveals character.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l022",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "And if you say 'both,' I will know you have no boundaries.",
+          "delay": 1.1
+        },
+        {
+          "type": "choice",
+          "id": "c007_taste",
+          "prompt": "Pick your poison.",
+          "options": [
+            {
+              "id": "o019_gothic",
+              "text": "Gothic romance. Let the doom be emotionally complicated.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "Shared her taste for intimate, atmospheric stories."
+                },
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Gave her something personal to talk about."
+                }
+              ],
+              "target": "p008_boundaries"
+            },
+            {
+              "id": "o020_horror",
+              "text": "Horror. I want the monster to be an actual problem.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Disagreed openly instead of performing shared taste."
+                }
+              ],
+              "target": "p008_boundaries"
+            },
+            {
+              "id": "o021_both",
+              "text": "Both. My boundaries are decorative.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Played along with her teasing."
+                },
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Comfortably accepted her teasing without surrendering a boundary."
+                }
+              ],
+              "target": "p008_boundaries"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p008_boundaries"
+    },
+    {
+      "id": "p008_boundaries",
+      "title": "Too much?",
+      "mode": "chat",
+      "background": "bedroom",
+      "music": "prologue_theme",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c007_o019",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "Good. Emotional doom is the correct doom.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o019_gothic",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c007_o020",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "A monster with practical problems. Respectable.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o020_horror",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c007_o021",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Decorative boundaries. Finally, someone understands.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o021_both",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l023",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "Then you will survive this: I am trying a new look tomorrow. Tell me if it is too much. And be honest. I can take criticism; I cannot take a liar.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l024",
+          "speaker": "narrator",
+          "text": "She sends a sketch: a high-collared black dress, burgundy paneling, silver chains. It is striking. So is the small uncertainty beneath her teasing.",
+          "delay": 1.0
+        },
+        {
+          "type": "choice",
+          "id": "c008_boundary",
+          "prompt": "Be honest.",
+          "options": [
+            {
+              "id": "o022_friendly",
+              "text": "It's beautiful. I'd like to keep this friendly, though. No pressure from me.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 2,
+                  "reason": "Complimented her while stating a clear romantic boundary."
+                },
+                {
+                  "type": "add_boundary",
+                  "key": "friendly_only"
+                },
+                {
+                  "type": "add_boundary",
+                  "key": "no_pressure"
+                }
+              ],
+              "target": "p009_warning"
+            },
+            {
+              "id": "o023_specific",
+              "text": "Not too much. The silver chains make it. You always notice the small things.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Gave a specific, respectful compliment."
+                },
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "A little chemistry grew without becoming a declaration."
+                }
+              ],
+              "target": "p009_warning"
+            },
+            {
+              "id": "o024_tease_dom",
+              "text": "Too much? Darling, I'm still deciding whether to forgive you for the sketch.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Mutual teasing felt comfortable to both of you."
+                },
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "The teasing carried a small, consensual charge."
+                }
+              ],
+              "target": "p009_warning"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p009_warning"
+    },
+    {
+      "id": "p009_warning",
+      "title": "When the rain stops",
+      "mode": "chat",
+      "background": "rain_window",
+      "music": "rain_ambience",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c008_o022",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Friendly. Understood. And for the record, I can respect a boundary without making it weird.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o022_friendly",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c008_o023",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "The chains were Salma's idea. I stole the credit.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o023_specific",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c008_o024",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "Forgive me? Careful. I might enjoy that too much.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o024_tease_dom",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l025",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "conditions": [
+            {
+              "type": "boundary",
+              "key": "friendly_only",
+              "op": "set",
+              "value": true
+            }
+          ],
+          "text": "Friendly. Understood. I am very good at boundaries when they are not wearing a stupid hat.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l026",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Good. Now that my ego is intact, listen to something strange.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l027",
+          "speaker": "narrator",
+          "text": "The lights flicker. Only once. The rain keeps falling.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l028",
+          "speaker": "dracy",
+          "expression": "suspicious",
+          "text": "If the rain stops tonight, do not answer your door.",
+          "delay": 1.6
+        },
+        {
+          "type": "choice",
+          "id": "c009_warning",
+          "prompt": "That was oddly specific.",
+          "options": [
+            {
+              "id": "o025_ask",
+              "text": "Why? Is someone outside?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Asked the obvious question instead of accepting a supernatural warning."
+                },
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "You were willing to hear her answer."
+                }
+              ],
+              "target": "p010_impossible_photo"
+            },
+            {
+              "id": "o026_joke",
+              "text": "Right. Because the rain is famous for stopping burglars.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Used humor to keep the exchange on your own terms."
+                }
+              ],
+              "target": "p010_impossible_photo"
+            },
+            {
+              "id": "o027_obey",
+              "text": "Okay. Door stays closed.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Took her warning seriously without demanding an explanation."
+                }
+              ],
+              "target": "p010_impossible_photo"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p010_impossible_photo"
+    },
+    {
+      "id": "p010_impossible_photo",
+      "title": "A street with no search results",
+      "mode": "chat",
+      "background": "rain_window",
+      "music": "rain_ambience",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c009_o025",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "Because doors are rude. You asked.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o025_ask",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c009_o026",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "The rain has never been famous for burglary prevention. Yet here we are.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o026_joke",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c009_o027",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Good. I like a person who listens before the doom arrives.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o027_obey",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l029",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Because the rain is a door, and doors are rude. That is the whole answer. You may applaud.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l030",
+          "speaker": "narrator",
+          "text": "Another photo arrives. A narrow street beneath violet lamps. No cars, no wires, no shop signs in any alphabet you recognize.",
+          "delay": 1.0
+        },
+        {
+          "type": "line",
+          "id": "l031",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "I go there when the city gets loud. Do not ask me for the address. Maps are dishonest there.",
+          "delay": 1.4
+        },
+        {
+          "type": "choice",
+          "id": "c010_search",
+          "prompt": "What do you do?",
+          "options": [
+            {
+              "id": "o028_search",
+              "text": "Save it and run a reverse image search.",
+              "effects": [
+                {
+                  "type": "set_flag",
+                  "key": "searched_photo",
+                  "value": true
+                },
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Tested her story instead of trusting it blindly."
+                }
+              ],
+              "target": "p011_search_result"
+            },
+            {
+              "id": "o029_accept",
+              "text": "I believe you. I don't need an address to know it matters to you.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Accepted a personal truth without demanding proof."
+                }
+              ],
+              "target": "p011_search_result"
+            },
+            {
+              "id": "o030_ask_photo",
+              "text": "You said you're a photographer. Why keep this one off your page?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Connected the photo to something she cares about."
+                }
+              ],
+              "target": "p011_search_result"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p011_search_result"
+    },
+    {
+      "id": "p011_search_result",
+      "title": "She notices everything",
+      "mode": "chat",
+      "background": "rain_window",
+      "music": "rain_ambience",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c010_o028",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Searching. Of course you are.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o028_search",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c010_o029",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "You did not ask to visit. That is rarer than you think.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o029_accept",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c010_o030",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "Because people ask to visit. Both answers exhaust me.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o030_ask_photo",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l032",
+          "speaker": "narrator",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "searched_photo",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "No matches. Not a stock image, not a game screenshot, not a cosplay event. The file's metadata contains only a time: 03:13. It is 01:06 now.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l033",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "searched_photo",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "You are searching for it right now.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l034",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "searched_photo",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Relax. I would tell you if it were a puzzle. This is just a place your internet has not met.",
+          "delay": 1.5
+        },
+        {
+          "type": "effect",
+          "id": "e011_noticed",
+          "effect": {
+            "type": "set_flag",
+            "key": "dracy_noticed_search",
+            "value": true
+          },
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "searched_photo",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l035",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "I keep it off my page because people either call it fake or ask to visit. Both are exhausting.",
+          "delay": 1.4
+        },
+        {
+          "type": "choice",
+          "id": "c011_trust",
+          "prompt": "She can't possibly know you're searching.",
+          "options": [
+            {
+              "id": "o031_called_out",
+              "text": "That is unsettling. How did you know?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Named the impossible detail instead of hiding your discomfort."
+                }
+              ],
+              "target": "p012_name_and_secret"
+            },
+            {
+              "id": "o032_deflect",
+              "text": "Maybe your profile is just very predictable.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Refused to be rattled by her teasing."
+                }
+              ],
+              "target": "p012_name_and_secret"
+            },
+            {
+              "id": "o033_no_visit",
+              "text": "For what it's worth, I'm not going to ask to visit.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Respected the difference between curiosity and entitlement."
+                }
+              ],
+              "target": "p012_name_and_secret"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p012_name_and_secret"
+    },
+    {
+      "id": "p012_name_and_secret",
+      "title": "One small truth",
+      "mode": "chat",
+      "background": "rain_window",
+      "music": "rain_ambience",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c011_o031",
+          "speaker": "dracy",
+          "expression": "suspicious",
+          "text": "I notice things. It is a burden.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o031_called_out",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c011_o032",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Predictable? We shall see.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o032_deflect",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c011_o033",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Then I will tell you one true thing, since you are being inconveniently decent.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o033_no_visit",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l036",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Then here is a small truth, since you are being inconveniently decent. I do not like mirrors in old buildings.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l037",
+          "speaker": "dracy",
+          "expression": "embarrassed",
+          "text": "There. Now you know a weakness. Use it responsibly, or I will tell everyone you cry at happy endings.",
+          "delay": 1.5
+        },
+        {
+          "type": "choice",
+          "id": "c012_name",
+          "prompt": "Do you share something real?",
+          "options": [
+            {
+              "id": "o034_share_name",
+              "text": "My name is {player_name}. And I don't cry at happy endings. I just need a minute.",
+              "effects": [
+                {
+                  "type": "set_flag",
+                  "key": "player_shared_name",
+                  "value": true
+                },
+                {
+                  "type": "set_flag",
+                  "key": "shared_small_secret",
+                  "value": true
+                },
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Reciprocated vulnerability with a truth of your own."
+                },
+                {
+                  "type": "memory",
+                  "id": "mem_player_name",
+                  "text": "The player shared their real first name with Dracy."
+                }
+              ],
+              "target": "p013_next_evening"
+            },
+            {
+              "id": "o035_weakness",
+              "text": "I'm afraid of answering the phone when I don't know who's calling. We all have things.",
+              "effects": [
+                {
+                  "type": "set_flag",
+                  "key": "shared_small_secret",
+                  "value": true
+                },
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Met her vulnerability without competing for sympathy."
+                }
+              ],
+              "target": "p013_next_evening"
+            },
+            {
+              "id": "o036_space",
+              "text": "I'll keep it safe. You don't have to explain the mirrors.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Protected her privacy instead of probing the weakness."
+                }
+              ],
+              "target": "p013_next_evening"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p013_next_evening"
+    },
+    {
+      "id": "p013_next_evening",
+      "title": "01:13 — The second night",
+      "mode": "vn",
+      "background": "bedroom",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c012_o034",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "A name. Good. I will not waste it.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o034_share_name",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c012_o035",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Phones are cruel little doors.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o035_weakness",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c012_o036",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Then we agree.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o036_space",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l038",
+          "speaker": "narrator",
+          "text": "The next evening, you come home tired. Your phone has been quiet all day. Dracy had a shoot, a match, and a life you are not part of yet.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l039",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "I am back. Salma is alive. The jacket survived. My faith in matchmaking did not.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l040",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "respected_dracy_busy",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "And before you ask: no, I did not receive twelve desperate messages. You are becoming suspiciously mature.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l041",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "I need to show you something. Not a prank. Not a costume. Something I should have shown you before we got comfortable.",
+          "delay": 1.8
+        },
+        {
+          "type": "line",
+          "id": "l042",
+          "speaker": "narrator",
+          "text": "For the first time, the typing indicator does not dance. The message arrives all at once.",
+          "delay": 1.1
+        }
+      ],
+      "next_scene": "p014_cathedral_photo"
+    },
+    {
+      "id": "p014_cathedral_photo",
+      "title": "The Cathedral of Ash",
+      "mode": "vn",
+      "background": "nocturne_glimpse",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "l043",
+          "speaker": "narrator",
+          "text": "The photograph shows a ruined cathedral beneath a black sky. Ash drifts between broken spires. A crimson moon hangs where no moon should fit.",
+          "delay": 1.3
+        },
+        {
+          "type": "line",
+          "id": "l044",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "This is the Cathedral of Ash. I took the photo two hours ago.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l045",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "I know how it sounds. I also know you are going to ask where it is, so let me save us both the argument.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l046",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "It is in Nocturne.",
+          "delay": 1.8
+        },
+        {
+          "type": "choice",
+          "id": "c013_nocturne",
+          "prompt": "Nocturne.",
+          "options": [
+            {
+              "id": "o037_world",
+              "text": "Your username. You weren't joking.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 1,
+                  "reason": "Connected the impossible photo to the first clue she gave you."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "player_suspects_supernatural_activity",
+                  "value": true
+                }
+              ],
+              "target": "p015_the_offer"
+            },
+            {
+              "id": "o038_question",
+              "text": "A city? A country? What exactly is Nocturne?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Asked for understanding instead of demanding instant belief."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "player_suspects_supernatural_activity",
+                  "value": true
+                }
+              ],
+              "target": "p015_the_offer"
+            },
+            {
+              "id": "o039_fiction",
+              "text": "If this is a story, the lighting is excellent.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Kept your footing when the conversation became strange."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "player_suspects_supernatural_activity",
+                  "value": true
+                }
+              ],
+              "target": "p015_the_offer"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p015_the_offer"
+    },
+    {
+      "id": "p015_the_offer",
+      "title": "Rules for a door",
+      "mode": "vn",
+      "background": "nocturne_glimpse",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c013_o037",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "The username was not entirely a joke.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o037_world",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c013_o038",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "A world. With cities. And rules. And people who will lie to you.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o038_question",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c013_o039",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "If this were a story, I would be a much worse photographer.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o039_fiction",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l047",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "A world. Or something close enough that the difference starts arguments. There are gateways. Places where the walls get thin.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l048",
+          "speaker": "dracy",
+          "expression": "sarcastic",
+          "text": "No, you cannot search for it. Yes, the moon is rude. No, I will not explain the politics tonight.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l049",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "If you come through a gateway, there are rules. Do not follow music. Do not give your name to strangers. And do not let go of my hand unless I tell you to.",
+          "delay": 1.8
+        },
+        {
+          "type": "line",
+          "id": "l050",
+          "speaker": "narrator",
+          "text": "There is a confidence in the way she says it. Then a hesitation, quickly hidden.",
+          "delay": 1.1
+        },
+        {
+          "type": "choice",
+          "id": "c014_rules",
+          "prompt": "How do you answer?",
+          "options": [
+            {
+              "id": "o040_agree",
+              "text": "Rules are fine. I listen better than I look like I do.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Accepted practical safety rules without treating them as control."
+                }
+              ],
+              "target": "p016_midnight_offer"
+            },
+            {
+              "id": "o041_boundary",
+              "text": "I'll hold your hand. I won't surrender control of where I go.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Set a clear boundary within a consensual dynamic."
+                },
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Named your limits directly instead of agreeing resentfully."
+                },
+                {
+                  "type": "add_boundary",
+                  "key": "no_pressure"
+                }
+              ],
+              "target": "p016_midnight_offer"
+            },
+            {
+              "id": "o042_joke",
+              "text": "No names, no music, no letting go. Is this a date or a safety briefing?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "attraction",
+                  "delta": 1,
+                  "reason": "Found the intimacy under her seriousness without forcing it."
+                }
+              ],
+              "target": "p016_midnight_offer"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p016_midnight_offer"
+    },
+    {
+      "id": "p016_midnight_offer",
+      "title": "Tomorrow, at midnight",
+      "mode": "vn",
+      "background": "nocturne_glimpse",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c014_o040",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Good. Rules keep people alive.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o040_agree",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c014_o041",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Agreed. I lead; you keep your own will. That is the arrangement.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o041_boundary",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c014_o042",
+          "speaker": "dracy",
+          "expression": "flirting",
+          "text": "A date with better safety standards.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o042_joke",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l051",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "A safety briefing with better cheekbones.",
+          "delay": 1.3
+        },
+        {
+          "type": "line",
+          "id": "l052",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "There is a gateway near you. I can feel it now. Tomorrow at midnight, I can meet you there.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l053",
+          "speaker": "narrator",
+          "text": "She sends coordinates. They resolve to an empty lot on the edge of town, a place you pass on the bus and never think about.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l054",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "I am not asking you to believe everything. I am asking you to trust me enough to look.",
+          "delay": 1.8
+        },
+        {
+          "type": "choice",
+          "id": "c015_offer",
+          "prompt": "This is not a small decision.",
+          "options": [
+            {
+              "id": "o043_later",
+              "text": "I need time. I'm not saying no.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Told the truth about your limits instead of making a fear-based promise."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "meeting_undecided",
+                  "value": true
+                }
+              ],
+              "target": "p017_the_blackout"
+            },
+            {
+              "id": "o044_curious",
+              "text": "Show me the gateway. I won't step through until I understand.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Chose curiosity with a sensible condition."
+                }
+              ],
+              "target": "p017_the_blackout"
+            },
+            {
+              "id": "o045_promise",
+              "text": "Midnight. I'll be there.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 2,
+                  "reason": "Made a considered promise to meet her."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "promised_to_meet",
+                  "value": true
+                }
+              ],
+              "target": "p017_the_blackout"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p017_the_blackout"
+    },
+    {
+      "id": "p017_the_blackout",
+      "title": "The rain stops",
+      "mode": "vn",
+      "background": "rain_window",
+      "music": "rain_ambience",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c015_o043",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "Time. Allowed. Do not disappear on me.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o043_later",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c015_o044",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "Look first. Step through never. Good.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o044_curious",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c015_o045",
+          "speaker": "dracy",
+          "expression": "embarrassed",
+          "text": "Midnight. I will pretend I am not nervous.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o045_promise",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l055",
+          "speaker": "dracy",
+          "expression": "sad",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "meeting_undecided",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Time is allowed. Just tell me before you decide that I am a liar.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l056",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_to_meet",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Midnight. Good. I will pretend I am not nervous.",
+          "delay": 1.3
+        },
+        {
+          "type": "line",
+          "id": "l057",
+          "speaker": "narrator",
+          "text": "At 01:31, the rain stops. Not gradually. All at once, as if someone has muted the city.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l058",
+          "speaker": "narrator",
+          "text": "The refrigerator hum dies. Your screen goes black. In the sudden silence, three soft knocks come from the front door.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l059",
+          "speaker": "dracy",
+          "expression": "frightened",
+          "text": "Hey. Do not open the door.",
+          "delay": 1.5
+        },
+        {
+          "type": "choice",
+          "id": "c016_knock",
+          "prompt": "Three knocks. No one you know lives nearby.",
+          "options": [
+            {
+              "id": "o046_stay",
+              "text": "Stay back from the door and wait for the lights.",
+              "effects": [
+                {
+                  "type": "set_flag",
+                  "key": "obeyed_warning",
+                  "value": true
+                },
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 2,
+                  "reason": "Trusted her warning when fear made obedience difficult."
+                }
+              ],
+              "target": "p018_return"
+            },
+            {
+              "id": "o047_peephole",
+              "text": "Look through the peephole. Don't open it.",
+              "effects": [
+                {
+                  "type": "set_flag",
+                  "key": "checked_front_door",
+                  "value": true
+                },
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Investigated cautiously without breaking the boundary."
+                }
+              ],
+              "target": "p018_return"
+            },
+            {
+              "id": "o048_open",
+              "text": "Open the door. If it's a person, they might need help.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "suspicion",
+                  "delta": 2,
+                  "reason": "Ignored a specific warning in a situation you could not understand."
+                }
+              ],
+              "target": "p018_return"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p018_return"
+    },
+    {
+      "id": "p018_return",
+      "title": "Nothing on the mat",
+      "mode": "vn",
+      "background": "rain_window",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c016_o046",
+          "speaker": "dracy",
+          "expression": "frightened",
+          "text": "Good. Stay there.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o046_stay",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c016_o047",
+          "speaker": "dracy",
+          "expression": "frightened",
+          "text": "Look if you must. Do not open it.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o047_peephole",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c016_o048",
+          "speaker": "narrator",
+          "expression": "neutral",
+          "text": "You reach for the lock. The knocking stops before your hand touches it.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o048_open",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l060",
+          "speaker": "narrator",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "checked_front_door",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Through the peephole: an empty hallway. No footsteps. No shadow moving away. Just a thin line of water beneath your door.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l061",
+          "speaker": "narrator",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "obeyed_warning",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "You stay where you are. The knocking stops. When the lights return, the hallway outside is empty. Water pools beneath the door, though it has not rained for hours.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l061b",
+          "speaker": "narrator",
+          "text": "You open the door. The hallway is empty. No footsteps. No shadow moving away. Water pools beneath the frame, though the rain stopped hours ago.",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "obeyed_warning",
+              "op": "neq",
+              "value": true
+            },
+            {
+              "type": "flag",
+              "key": "checked_front_door",
+              "op": "neq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l062",
+          "speaker": "narrator",
+          "text": "Your phone lights up. Dracy is calling. Her voice sounds close, breathless, and furious with herself.",
+          "delay": 1.2
+        },
+        {
+          "type": "line",
+          "id": "l063",
+          "speaker": "dracy",
+          "expression": "frightened",
+          "text": "Tell me you did not open it.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l064",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "I felt the gateway wake up. I thought I had more time. I am not ready to explain all of it, but I will not insult you with another lie.",
+          "delay": 1.8
+        },
+        {
+          "type": "choice",
+          "id": "c017_truth",
+          "prompt": "What do you need to hear?",
+          "options": [
+            {
+              "id": "o049_truth",
+              "text": "Then tell me the part that matters. Are you in danger?",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Put her wellbeing ahead of your need for a complete explanation."
+                }
+              ],
+              "target": "p019_partial_truth"
+            },
+            {
+              "id": "o050_anger",
+              "text": "I listened to you. Now you owe me the truth.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Asserted your need for honesty without insulting her."
+                },
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Refused to let urgency erase your boundaries."
+                }
+              ],
+              "target": "p019_partial_truth"
+            },
+            {
+              "id": "o051_gentle",
+              "text": "You don't have to explain tonight. Just stay on the line.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Offered presence without forcing a confession."
+                }
+              ],
+              "target": "p019_partial_truth"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p019_partial_truth"
+    },
+    {
+      "id": "p019_partial_truth",
+      "title": "Not from your world",
+      "mode": "vn",
+      "background": "bedroom",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c017_o049",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "Danger? I do not know. That is the honest answer.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o049_truth",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c017_o050",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "The truth. Yes. You deserve that.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o050_anger",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c017_o051",
+          "speaker": "dracy",
+          "expression": "embarrassed",
+          "text": "Then stay. Please.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o051_gentle",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l065",
+          "speaker": "dracy",
+          "expression": "sad",
+          "text": "I do not know if I am in danger. That is the problem with doors: you never know what has learned your name.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l066",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "I am not from your world. Nocturne is real. So is the Cathedral of Ash. So are the things that notice when a gateway opens.",
+          "delay": 1.9
+        },
+        {
+          "type": "line",
+          "id": "l067",
+          "speaker": "narrator",
+          "text": "She lets that sit between you. She does not say what she is. The question is there, enormous and deliberately unanswered.",
+          "delay": 1.4
+        },
+        {
+          "type": "effect",
+          "id": "e019_reveal",
+          "effect": {
+            "type": "set_flag",
+            "key": "dracy_secret_partially_revealed",
+            "value": true
+          }
+        },
+        {
+          "type": "effect",
+          "id": "e019_gateway",
+          "effect": {
+            "type": "set_flag",
+            "key": "gateway_discovered",
+            "value": true
+          }
+        },
+        {
+          "type": "line",
+          "id": "l068",
+          "speaker": "dracy",
+          "expression": "embarrassed",
+          "text": "I wanted to be your friend before I was a mystery. I may have arranged that badly.",
+          "delay": 1.6
+        },
+        {
+          "type": "choice",
+          "id": "c018_accept",
+          "prompt": "She waits for your answer.",
+          "options": [
+            {
+              "id": "o052_accept",
+              "text": "You're still my friend. We'll deal with the impossible part together.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 2,
+                  "reason": "Separated your care for her from your need for proof."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "dracy_felt_safe",
+                  "value": true
+                }
+              ],
+              "target": "p020_final_photo"
+            },
+            {
+              "id": "o053_time",
+              "text": "I believe you're telling the truth. I still need time to understand it.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "trust",
+                  "delta": 1,
+                  "reason": "Believed her without pretending the revelation was easy."
+                }
+              ],
+              "target": "p020_final_photo"
+            },
+            {
+              "id": "o054_tease",
+              "text": "Next time, lead with 'alternate dimension.' The vampire username was misleading.",
+              "effects": [
+                {
+                  "type": "relationship",
+                  "key": "curiosity",
+                  "delta": 1,
+                  "reason": "Used shared humor to make room for a frightening truth."
+                },
+                {
+                  "type": "relationship",
+                  "key": "dominance",
+                  "delta": 1,
+                  "reason": "Lightened the moment without denying what she said."
+                }
+              ],
+              "target": "p020_final_photo"
+            }
+          ]
+        }
+      ],
+      "next_scene": "p020_final_photo"
+    },
+    {
+      "id": "p020_final_photo",
+      "title": "Your street, from the other side",
+      "mode": "vn",
+      "background": "impossible_street",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "r_c018_o052",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "text": "You say that so easily. It is either very brave or very foolish. I approve.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o052_accept",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c018_o053",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "Time. I can give you that.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o053_time",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "r_c018_o054",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "Alternate dimension. Yes. Much clearer branding.",
+          "conditions": [
+            {
+              "type": "choice_made",
+              "key": "o054_tease",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "id": "l069",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "dracy_felt_safe",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Together. That is a dangerous word. I think I like it.",
+          "delay": 1.4
+        },
+        {
+          "type": "line",
+          "id": "l070",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "One last photo. I took it five minutes ago. Look at the sign.",
+          "delay": 1.3
+        },
+        {
+          "type": "line",
+          "id": "l071",
+          "speaker": "narrator",
+          "text": "Your street. The same crooked lamppost. The same chipped blue door at number seventeen. But the sky is purple, and the sign above the corner reads VELMORA.",
+          "delay": 1.5
+        },
+        {
+          "type": "effect",
+          "id": "e020_saw",
+          "effect": {
+            "type": "set_flag",
+            "key": "saw_impossible_street",
+            "value": true
+          }
+        },
+        {
+          "type": "line",
+          "id": "l072",
+          "speaker": "dracy",
+          "expression": "neutral",
+          "text": "This is your street. From my side.",
+          "delay": 1.8
+        },
+        {
+          "type": "line",
+          "id": "l073",
+          "speaker": "dracy",
+          "expression": "smiling",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "player_shared_name",
+              "op": "eq",
+              "value": true
+            }
+          ],
+          "text": "Sleep, {player_name}. I will be online after dark. I am glad you told me your name.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l074",
+          "speaker": "dracy",
+          "expression": "embarrassed",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "player_shared_name",
+              "op": "neq",
+              "value": true
+            }
+          ],
+          "text": "Sleep. I will be online after dark. And thank you for not calling me a liar.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l075",
+          "speaker": "dracy",
+          "expression": "mischievous",
+          "text": "If the rain starts again, that is normal. If it starts flowing upward, message me immediately.",
+          "delay": 1.4
+        },
+        {
+          "type": "jump",
+          "id": "j020_ending",
+          "target": "p020_promise_ending",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "promised_to_meet",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        {
+          "type": "jump",
+          "id": "j020_wait_ending",
+          "target": "p020_undecided_ending"
+        }
+      ],
+      "next_scene": "p020_undecided_ending"
+    },
+    {
+      "id": "p020_promise_ending",
+      "title": "A door awaits",
+      "mode": "narration",
+      "background": "impossible_street",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "l076",
+          "speaker": "narrator",
+          "text": "Midnight tomorrow. An empty lot. A girl who is not from your world, and a door you have promised to consider opening.",
+          "delay": 1.5
+        },
+        {
+          "type": "line",
+          "id": "l077",
+          "speaker": "narrator",
+          "text": "For the first time all night, the rain sounds like rain.",
+          "delay": 1.5
+        },
+        {
+          "type": "end",
+          "id": "end_promise"
+        }
+      ],
+      "ending": "a_door_awaits"
+    },
+    {
+      "id": "p020_undecided_ending",
+      "title": "Until midnight",
+      "mode": "narration",
+      "background": "impossible_street",
+      "music": "after_midnight",
+      "steps": [
+        {
+          "type": "line",
+          "id": "l078",
+          "speaker": "narrator",
+          "text": "You have not decided. Dracy has not pretended the choice is harmless. Somewhere on the other side of your window, a city called Velmora is awake.",
+          "delay": 1.6
+        },
+        {
+          "type": "line",
+          "id": "l079",
+          "speaker": "narrator",
+          "text": "The next chapter will begin at midnight.",
+          "delay": 1.6
+        },
+        {
+          "type": "end",
+          "id": "end_wait"
+        }
+      ],
+      "ending": "until_midnight"
+    }
+  ]
+}
