@@ -85,6 +85,14 @@
 - Re-tested image generation through the newer `generate_image` tool (`opencode/gemini-nano-banana-2.1`): it is blocked by the same insufficient-balance error, so no generated sprite exists.
 - Rebuilt the eyes as clipped almonds with a crimson iris, heavy winged liner, layered lashes, and smoky socket shading; softened the jaw, widened the lips, and replaced the straight eyebrow bars with finer arches.
 
+### 10. Free automated art path
+
+- Added `SpritePaths`, which prefers transparent generated PNGs and falls back to the vector set, so sprites can be swapped without touching UI code.
+- Added `tools/import_generated_art.py` to chroma-key rendered PNGs, crop to the subject, and fit them to the existing sprite dimensions.
+- Added `tools/local_generate_art.py` to run SDXL img2img locally on an NVIDIA GPU, using the existing vector previews as composition guides. This needs no API key and no paid credits.
+- Updated the asset manifest builder to validate and manifest generated PNGs when present.
+- Verified the UI smoke suite still passes with the new path resolver (17 checks, 0 failures).
+
 ## Remaining after M01
 
 - Author and implement Chapter 01.

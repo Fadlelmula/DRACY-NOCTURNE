@@ -103,4 +103,5 @@ All poses and outfits preserve the same face, hair, eyes, beauty mark, injuries,
 - Portrait sprites are 900 × 1200; standing/outfit sprites are 600 × 1400; the seated sprite is 600 × 1200.
 - The expression set and outfit/pose set are complete and validated, but the vector rendering is flatter and more stylized than the reference. Treat it as a production placeholder.
 - `game/tools/render_previews.gd` rasterizes the ten expressions plus the poses, outfits, and backgrounds into `user://art_review` for visual review.
+- When a free local GPU or an external image source is used, `tools/local_generate_art.py` and `tools/import_generated_art.py` add transparent PNGs under `sprites/generated/`. Game code prefers those PNGs through `SpritePaths`; deleting the folder restores the vector fallback instantly.
 - When an image service is funded, generate a separated raw sprite set, then replace the vector files without changing paths. Keep the reference and the vector generator so the fallback remains reproducible.

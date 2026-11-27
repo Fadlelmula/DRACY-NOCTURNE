@@ -126,6 +126,7 @@ docs/                     Architecture, narrative authoring, reports, logs
 - `game/scripts/narrative/narrative_validator.gd` rejects broken scene, choice, flag, expression, effect, and choice-history references before play.
 - Localization can override any line with `line.<line_id>` and any choice with `choice.<option_id>` in `game/localization/<locale>.json`.
 - Art and audio can be regenerated with `python tools/generate_art.py` and `python tools/generate_audio.py` from inside `game/`.
+- Final painted sprites can be produced locally for free on an NVIDIA GPU with `py tools/local_generate_art.py --all`, then made transparent with `py tools/import_generated_art.py`. The game prefers the resulting PNGs automatically; deleting `game/assets/characters/dracy/sprites/generated/` restores the vector set. See `docs/development-log.md` for details.
 
 Read [`docs/narrative-system.md`](docs/narrative-system.md) before adding chapters.
 

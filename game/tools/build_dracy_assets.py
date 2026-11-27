@@ -9,6 +9,7 @@ from pathlib import Path
 import hashlib
 import json
 import re
+import struct
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +28,25 @@ def sha256(path: Path) -> str:
 def svg_size(path: Path) -> tuple[int, int]:
     root = ET.parse(path).getroot()
     return int(root.attrib["width"]), int(root.attrib["height"])
+
+
+def png_size(path: Path) -> tuple[int, int]:
+    data = path.read_bytes()[:24]
+    if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        raise SystemExit(f"Not a valid PNG: {path}")
+    return struct.unpack(">II", data[16:24])
+
+
+def resolve_sprite(folder: str, name: str, expected: tuple[int, int]) -> Path:
+    """Prefer a generated transparent PNG; fall back to the vector source."""
+    generated = CHARACTER / "sprites" / "generated" / f"{name}.png"
+    if generated.exists():
+        if png_size(generated) != expected:
+            raise SystemExit(f"Unexpected dimensions for {generated}: {png_size(generated)} != {expected}")
+        return generated
+    path = CHARACTER / "sprites" / folder / f"{name}.svg"
+    validate_sprite(path, expected)
+    return path
 
 
 def validate_sprite(path: Path, expected: tuple[int, int]) -> None:
@@ -55,25 +75,29 @@ def main() -> None:
 
     assets = []
     for name in EXPRESSIONS:
-        path = CHARACTER / "sprites" / "expressions" / f"{name}.svg"
-        validate_sprite(path, (900, 1200))
+        path = resolve_sprite("expressions", name, (900, 1200))
         assets.append({"name": name, "type": "expression", "path": str(path.relative_to(ROOT)), "width": 900, "height": 1200})
     for name in POSES:
-        path = CHARACTER / "sprites" / "poses" / f"{name}.svg"
         expected = (600, 1200) if name == "seated" else (600, 1400)
-        validate_sprite(path, expected)
+        path = resolve_sprite("poses", name, expected)
         assets.append({"name": name, "type": "pose", "path": str(path.relative_to(ROOT)), "width": expected[0], "height": expected[1]})
     for name in OUTFITS:
-        path = CHARACTER / "sprites" / "outfits" / f"{name}.svg"
-        validate_sprite(path, (600, 1400))
+        path = resolve_sprite("outfits", name, (600, 1400))
         assets.append({"name": name, "type": "outfit", "path": str(path.relative_to(ROOT)), "width": 600, "height": 1400})
 
+    generated = CHARACTER / "sprites" / "generated"
+    uses_generated = generated.exists() and any(generated.glob("*.png"))
     manifest = {
         "character": "Dracy",
         "approved_reference": str(REFERENCE.relative_to(ROOT)),
         "approved_reference_sha256": reference_hash,
-        "pipeline": "game/tools/generate_art.py + game/tools/build_dracy_assets.py",
-        "style": "Original transparent semi-stylized vector interpretation guided by the approved reference; no reference-sheet crops.",
+        "pipeline": ("game/tools/import_generated_art.py + game/tools/build_dracy_assets.py"
+                     if uses_generated else
+                     "game/tools/generate_art.py + game/tools/build_dracy_assets.py"),
+        "style": ("Original transparent generated renders guided by the approved reference; "
+                  "no reference-sheet crops."
+                  if uses_generated else
+                  "Original transparent semi-stylized vector interpretation guided by the approved reference; no reference-sheet crops."),
         "license": "Project proprietary — see LICENSE",
         "assets": assets,
     }

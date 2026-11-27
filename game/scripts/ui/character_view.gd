@@ -3,7 +3,6 @@ extends Control
 ## Displays one complete transparent expression sprite. Every expression is
 ## generated from the same approved master, preventing identity drift.
 
-const EXPRESSION_DIR := "res://assets/characters/dracy/sprites/expressions/%s.svg"
 
 var sprite: TextureRect
 var _expression_tween: Tween
@@ -23,9 +22,9 @@ func set_expression(name: String) -> void:
 	_queued_expression = name
 	if sprite == null:
 		return
-	var path := EXPRESSION_DIR % name
+	var path := SpritePaths.expression(name)
 	if not ResourceLoader.exists(path):
-		path = EXPRESSION_DIR % "neutral"
+		path = SpritePaths.expression("neutral")
 	var texture := load(path) as Texture2D
 	if texture == null:
 		return

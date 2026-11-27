@@ -30,7 +30,7 @@ func _build() -> void:
 	for outfit in ["signature", "casual", "gothic", "alternative"]:
 		var card := VBoxContainer.new()
 		var art := TextureRect.new()
-		art.texture = load("res://assets/characters/dracy/sprites/outfits/%s.svg" % outfit)
+		art.texture = load(SpritePaths.outfit(outfit))
 		art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		art.custom_minimum_size = Vector2(190, 360)
